@@ -15,6 +15,8 @@ The workspace contains:
 
 ## Production mode
 `npm run start:prod` - It builds the app into dist folder and lounches the simple standalone server. Plugins are built as host application's assets. It will load plugin from '/assets/plugins/plugin-one/remoteEntry.js' and '/assets/plugins/plugin-two/remoteEntry.js' urls.
-Each plugin can be changed and build independently, without stopping and rebuilding the host app. To rebuild the single plugin the command `npm run build:plugin-one` or `npm run build:plugin-two` can be used. After the plugin is rebuilded, the user needs to refresh the host app in the browser.
+Each plugin can be changed and build independently, without stopping and rebuilding the host app. 
+To rebuild the single plugin the command `npm run build:plugin-one` or `npm run build:plugin-two` can be used. 
+After the plugin is rebuilded, the user needs to refresh the host app in the browser.
 
 

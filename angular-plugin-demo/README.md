@@ -11,12 +11,17 @@ The workspace contains:
 
 
 ## Development mode
-`npm run start` - It serves both plugin apps and the host app on different ports. Host app will load plugins from 'http://localhost:5001/remoteEntry.js' and 'http://localhost:5002/remoteEntry.js' urls.
+`npm run start` - It serves both plugin apps and the host app on different ports. 
+
+Host app will load plugins from `http://localhost:5001/remoteEntry.js` and `http://localhost:5002/remoteEntry.js` urls.
 
 ## Production mode
-`npm run start:prod` - It builds the app into dist folder and lounches the simple standalone server. Plugins are built as host application's assets. It will load plugin from '/assets/plugins/plugin-one/remoteEntry.js' and '/assets/plugins/plugin-two/remoteEntry.js' urls.
+`npm run start:prod` - It builds the app into dist folder and lounches the simple standalone server. Plugins are built as host application's assets. 
+
+It will load plugins from `/assets/plugins/plugin-one/remoteEntry.js` and `/assets/plugins/plugin-two/remoteEntry.js` urls.
+
 Each plugin can be changed and build independently, without stopping and rebuilding the host app. 
-To rebuild the single plugin the command `npm run build:plugin-one` or `npm run build:plugin-two` can be used. 
-After the plugin is rebuilded, the user needs to refresh the host app in the browser.
 
+To rebuild the single plugin use the command `npm run build:plugin-one` or `npm run build:plugin-two`.
 
+After the plugin is rebuilt, the user needs to refresh the host app in the browser.

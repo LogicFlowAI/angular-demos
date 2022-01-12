@@ -16,6 +16,8 @@
 .history/*
 
 # misc
+.angular
+dist
 npm-debug.log
 yarn-error.log
 testem.log
@@ -24,3 +26,5 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+node_modules

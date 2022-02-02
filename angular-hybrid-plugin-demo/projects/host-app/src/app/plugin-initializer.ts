@@ -1,15 +1,11 @@
 import { APP_INITIALIZER, ValueProvider } from '@angular/core';
 import { getAngularJSGlobal } from '@angular/upgrade/static';
+import {environment} from "../environments/environment";
 
 export interface PluginDefinition {
   module: string;
   script: string;
 }
-
-const PLUGINS: PluginDefinition[] = [
-  {module: 'pluginC', script: '/assets/plugins/plugin-c/plugin-c.js'},
-  {module: 'pluginD', script: '/assets/plugins/plugin-d/plugin-d.js'},
-]
 
 const loadScript = (fileName: string): Promise<unknown> =>
   new Promise<unknown>((resolve) => {
@@ -38,7 +34,8 @@ const loadSinglePlugin = async (pluginDefinition: PluginDefinition): Promise<str
 
 const loadPlugins = async () => {
   console.log('Load plugins');
-  const pluginsLoad = PLUGINS.map((def) => loadSinglePlugin(def));
+  const pluginsList = environment.ANGULAR_JS_PLUGIN_LIST;
+  const pluginsLoad = pluginsList.map((def) => loadSinglePlugin(def));
   const angularModules = (await Promise.all(pluginsLoad)).filter(x => !!x);
   console.log('Plugins script created');
 

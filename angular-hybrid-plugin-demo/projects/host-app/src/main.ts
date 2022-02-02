@@ -1,12 +1,7 @@
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import {preloadPlugins} from "./shared/preload-plugins";
+import {environment} from "./environments/environment";
 
-import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
-
-if (environment.production) {
-  enableProdMode();
-}
-
-platformBrowserDynamic().bootstrapModule(AppModule)
+preloadPlugins(environment.HYBRID_PLUGIN_LIST)
+  .catch(err => console.error('Error loading remote entries', err))
+  .then(() => import('./bootstrap'))
   .catch(err => console.error(err));

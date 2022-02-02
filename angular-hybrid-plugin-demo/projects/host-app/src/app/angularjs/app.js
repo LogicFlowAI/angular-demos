@@ -14,6 +14,12 @@ angular.module('hostApp', ['core', 'appScreens'])
         path: '/screen-b',
         order: 0,
         template: '<screen-b></screen-b>'
+      })
+      .registerScreen({
+        name: 'Angular 2+ screen',
+        path: '/screen-angular',
+        order: 0,
+        template: '<app-screen></app-screen>'
       });
 
   }]);

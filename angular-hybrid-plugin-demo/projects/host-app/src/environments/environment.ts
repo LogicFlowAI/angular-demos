@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  ANGULAR_JS_PLUGIN_LIST: [
+    {module: 'pluginC', script: '/assets/plugins/plugin-c/plugin-c.js'},
+    {module: 'pluginD', script: '/assets/plugins/plugin-d/plugin-d.js'},
+  ],
+  HYBRID_PLUGIN_LIST: [
+    'http://localhost:5001/remoteEntry.js'
+  ]
 };
 
 /*

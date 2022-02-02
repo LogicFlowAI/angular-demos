@@ -3,13 +3,19 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "start:plugin-hybrid": "ng serve plugin-hybrid --port 5001",
+    "build:plugin-hybrid": "ng build plugin-hybrid",
+    "start:host": "ng serve",
+    "build:host": "ng build",
+    "build:plugins": "npm run build:plugin-hybrid",
+    "build": "npm run build:host && npm run build:plugins",
+    "start": "npm-run-all --parallel start:plugin-hybrid start:host",
+    "run:prod": "http-server dist/host-app",
+    "start:prod": "npm run build && npm run run:prod"
   },
   "private": true,
   "dependencies": {
+    "@angular-architects/module-federation": "14.0.1",
     "angular": "1.7.8",
     "angular-route": "1.7.8",
     "@angular/animations": "13.1.1",
@@ -26,6 +32,8 @@
     "zone.js": "0.11.4"
   },
   "devDependencies": {
+    "npm-run-all": "4.1.5",
+    "http-server": "14.1.0",
     "@angular-devkit/build-angular": "13.1.2",
     "@angular/cli": "13.1.2",
     "@angular/compiler-cli": "13.1.1",

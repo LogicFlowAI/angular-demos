@@ -5,8 +5,6 @@ function ScreensService(registeredScreens) {
 
 function ScreensProvider($routeProvider) {
 
-  console.log($routeProvider);
-
   this._registeredScreens = [];
 
   this.registerScreen = ({name, path, template, templateUrl, isDefault, order}) => {
@@ -28,5 +26,4 @@ function ScreensProvider($routeProvider) {
   this.$get = () => new ScreensService(this._registeredScreens);
 
 }
-console.log('Screen provider registered');
 angular.module('core').provider('screens', ['$routeProvider', ScreensProvider]);

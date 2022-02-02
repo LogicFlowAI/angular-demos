@@ -1,6 +1,7 @@
 function PluginDCtrl(notifier) {
   this.notifier = notifier;
   this.title = 'Plugin D';
+  this.message = '';
   this.notify = () => {
     this.notifier.notify('Hello from plugin D');
   }

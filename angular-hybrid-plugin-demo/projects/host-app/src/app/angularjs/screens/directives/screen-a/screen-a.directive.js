@@ -4,6 +4,8 @@ function ScreenACtrl(notifier) {
 
   this.title = 'Screen A';
 
+  this.message = '';
+
   this.notify = () => {
     this.notifier.notify('Hello from screen A');
   }

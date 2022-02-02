@@ -3,4 +3,8 @@
   <button type="button" ng-click="screenA.notify()">
     Notify A
   </button>
+  <hr/>
+  <input type="text" ng-model="screenA.message"/>
+  <collector-invoker from="Screen A" message="screenA.message">
+  </collector-invoker>
 </div>

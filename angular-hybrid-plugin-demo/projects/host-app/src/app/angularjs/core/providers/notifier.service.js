@@ -4,4 +4,4 @@ function Notifier(){
   }
 }
 
-angular.module('core').service('notifier', Notifier);
+//angular.module('core').service('notifier', Notifier);

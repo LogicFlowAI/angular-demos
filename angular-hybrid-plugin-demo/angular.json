@@ -1,0 +1,261 @@
+{
+	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+	"version": 1,
+	"newProjectRoot": "projects",
+	"projects": {
+		"host-app": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "scss"
+				},
+				"@schematics/angular:application": {
+					"strict": true
+				}
+			},
+			"root": "projects/host-app",
+			"sourceRoot": "projects/host-app/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/host-app",
+						"index": "projects/host-app/src/index.html",
+						"main": "projects/host-app/src/main.ts",
+						"polyfills": "projects/host-app/src/polyfills.ts",
+						"tsConfig": "projects/host-app/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/host-app/src/favicon.ico",
+							"projects/host-app/src/assets",
+							{
+								"glob": "**/*.html",
+								"input": "projects/host-app/src/app/angularjs",
+								"output": "/"
+							}
+						],
+						"styles": [
+							"projects/host-app/src/styles.scss"
+						],
+						"scripts": [
+							"node_modules/angular/angular.js",
+							"node_modules/angular-route/angular-route.js",
+							"projects/host-app/src/app/angularjs/core/core.module.js",
+							"projects/host-app/src/app/angularjs/core/providers/screen.provider.js",
+							"projects/host-app/src/app/angularjs/core/providers/notifier.service.js",
+							"projects/host-app/src/app/angularjs/core/providers/message-collector.service.js",
+							"projects/host-app/src/app/angularjs/core/directives/menu/menu.directive.js",
+							"projects/host-app/src/app/angularjs/core/directives/collector-invoker/collector-invoker.directive.js",
+							"projects/host-app/src/app/angularjs/screens/screens.module.js",
+							"projects/host-app/src/app/angularjs/screens/directives/screen-a/screen-a.directive.js",
+							"projects/host-app/src/app/angularjs/screens/directives/screen-b/screen-b.directive.js",
+							"projects/host-app/src/app/angularjs/app.js",
+							"projects/host-app/src/app/angularjs/directives/app-root/app-root.directive.js"
+						],
+						"extraWebpackConfig": "projects/host-app/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kb",
+									"maximumError": "1mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kb",
+									"maximumError": "4kb"
+								}
+							],
+							"fileReplacements": [
+								{
+									"replace": "projects/host-app/src/environments/environment.ts",
+									"with": "projects/host-app/src/environments/environment.prod.ts"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/host-app/webpack.prod.config.js"
+						},
+						"development": {
+							"buildOptimizer": false,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"browserTarget": "host-app:build:production",
+							"extraWebpackConfig": "projects/host-app/webpack.prod.config.js"
+						},
+						"development": {
+							"browserTarget": "host-app:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4200,
+						"publicHost": "http://localhost:4200",
+						"extraWebpackConfig": "projects/host-app/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "ngx-build-plus:extract-i18n",
+					"options": {
+						"browserTarget": "host-app:build",
+						"extraWebpackConfig": "projects/host-app/webpack.config.js"
+					}
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"main": "projects/host-app/src/test.ts",
+						"polyfills": "projects/host-app/src/polyfills.ts",
+						"tsConfig": "projects/host-app/tsconfig.spec.json",
+						"karmaConfig": "projects/host-app/karma.conf.js",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/host-app/src/favicon.ico",
+							"projects/host-app/src/assets"
+						],
+						"styles": [
+							"projects/host-app/src/styles.scss"
+						],
+						"scripts": []
+					}
+				}
+			}
+		},
+		"plugin-hybrid": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "scss"
+				},
+				"@schematics/angular:application": {
+					"strict": true
+				}
+			},
+			"root": "projects/plugin-hybrid",
+			"sourceRoot": "projects/plugin-hybrid/src",
+			"prefix": "plg",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/host-app/assets/plugins/plugin-hybrid",
+						"index": "projects/plugin-hybrid/src/index.html",
+						"main": "projects/plugin-hybrid/src/main.ts",
+						"polyfills": "projects/plugin-hybrid/src/polyfills.ts",
+						"tsConfig": "projects/plugin-hybrid/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/plugin-hybrid/src/favicon.ico",
+							"projects/plugin-hybrid/src/assets",
+							{
+								"glob": "**/*.html",
+								"input": "projects/plugin-hybrid/src/app/angularjs",
+								"output": "/"
+							}
+						],
+						"styles": [
+							"projects/plugin-hybrid/src/styles.scss"
+						],
+						"scripts": [
+							"node_modules/angular/angular.js",
+              "projects/shared/fallback.js"
+						],
+						"extraWebpackConfig": "projects/plugin-hybrid/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kb",
+									"maximumError": "1mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kb",
+									"maximumError": "4kb"
+								}
+							],
+							"fileReplacements": [
+								{
+									"replace": "projects/plugin-hybrid/src/environments/environment.ts",
+									"with": "projects/plugin-hybrid/src/environments/environment.prod.ts"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/plugin-hybrid/webpack.prod.config.js"
+						},
+						"development": {
+							"buildOptimizer": false,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"browserTarget": "plugin-hybrid:build:production",
+							"extraWebpackConfig": "projects/plugin-hybrid/webpack.prod.config.js"
+						},
+						"development": {
+							"browserTarget": "plugin-hybrid:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 5001,
+						"publicHost": "http://localhost:5001",
+						"extraWebpackConfig": "projects/plugin-hybrid/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "ngx-build-plus:extract-i18n",
+					"options": {
+						"browserTarget": "plugin-hybrid:build",
+						"extraWebpackConfig": "projects/plugin-hybrid/webpack.config.js"
+					}
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"main": "projects/plugin-hybrid/src/test.ts",
+						"polyfills": "projects/plugin-hybrid/src/polyfills.ts",
+						"tsConfig": "projects/plugin-hybrid/tsconfig.spec.json",
+						"karmaConfig": "projects/plugin-hybrid/karma.conf.js",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/plugin-hybrid/src/favicon.ico",
+							"projects/plugin-hybrid/src/assets"
+						],
+						"styles": [
+							"projects/plugin-hybrid/src/styles.scss"
+						],
+						"scripts": []
+					}
+				}
+			}
+		}
+	},
+	"defaultProject": "host-app"
+}

@@ -1,0 +1,10 @@
+<div>
+  <h1>{{title}}</h1>
+  <button type="button" (click)="notify()">
+    Notify
+  </button>
+  <hr/>
+  <input type="text" [(ngModel)]="message"/>
+  <app-collector-invoker from="Angular 2+ screen" [message]="message">
+  </app-collector-invoker>
+</div>

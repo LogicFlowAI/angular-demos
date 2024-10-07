@@ -95,24 +95,6 @@
 						"browserTarget": "host-app:build",
 						"extraWebpackConfig": "projects/host-app/webpack.config.js"
 					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/host-app/src/test.ts",
-						"polyfills": "projects/host-app/src/polyfills.ts",
-						"tsConfig": "projects/host-app/tsconfig.spec.json",
-						"karmaConfig": "projects/host-app/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/host-app/src/favicon.ico",
-							"projects/host-app/src/assets"
-						],
-						"styles": [
-							"projects/host-app/src/styles.scss"
-						],
-						"scripts": []
-					}
 				}
 			}
 		},
@@ -208,24 +190,6 @@
 						"browserTarget": "plugin-one:build",
 						"extraWebpackConfig": "projects/plugin-one/webpack.config.js"
 					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/plugin-one/src/test.ts",
-						"polyfills": "projects/plugin-one/src/polyfills.ts",
-						"tsConfig": "projects/plugin-one/tsconfig.spec.json",
-						"karmaConfig": "projects/plugin-one/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/plugin-one/src/favicon.ico",
-							"projects/plugin-one/src/assets"
-						],
-						"styles": [
-							"projects/plugin-one/src/styles.scss"
-						],
-						"scripts": []
-					}
 				}
 			}
 		},
@@ -249,14 +213,6 @@
 						}
 					},
 					"defaultConfiguration": "production"
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/plugin-core/src/test.ts",
-						"tsConfig": "projects/plugin-core/tsconfig.spec.json",
-						"karmaConfig": "projects/plugin-core/karma.conf.js"
-					}
 				}
 			}
 		},
@@ -352,27 +308,11 @@
 						"browserTarget": "plugin-two:build",
 						"extraWebpackConfig": "projects/plugin-two/webpack.config.js"
 					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/plugin-two/src/test.ts",
-						"polyfills": "projects/plugin-two/src/polyfills.ts",
-						"tsConfig": "projects/plugin-two/tsconfig.spec.json",
-						"karmaConfig": "projects/plugin-two/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/plugin-two/src/favicon.ico",
-							"projects/plugin-two/src/assets"
-						],
-						"styles": [
-							"projects/plugin-two/src/styles.scss"
-						],
-						"scripts": []
-					}
 				}
 			}
 		}
-	},
-	"defaultProject": "host-app"
+  },
+  "cli": {
+    "analytics": false
+  }
 }

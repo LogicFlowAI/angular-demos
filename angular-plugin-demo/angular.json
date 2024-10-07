@@ -18,7 +18,7 @@
 			"prefix": "app",
 			"architect": {
 				"build": {
-					"builder": "ngx-build-plus:browser",
+					"builder": "@angular-devkit/build-angular:browser",
 					"options": {
 						"outputPath": "dist/host-app",
 						"index": "projects/host-app/src/index.html",
@@ -34,7 +34,6 @@
 							"projects/host-app/src/styles.scss"
 						],
 						"scripts": [],
-						"extraWebpackConfig": "projects/host-app/webpack.config.js",
 						"commonChunk": false
 					},
 					"configurations": {
@@ -57,8 +56,7 @@
 									"with": "projects/host-app/src/environments/environment.prod.ts"
 								}
 							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/host-app/webpack.prod.config.js"
+							"outputHashing": "all"
 						},
 						"development": {
 							"buildOptimizer": false,
@@ -72,11 +70,10 @@
 					"defaultConfiguration": "production"
 				},
 				"serve": {
-					"builder": "ngx-build-plus:dev-server",
+					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "host-app:build:production",
-							"extraWebpackConfig": "projects/host-app/webpack.prod.config.js"
+							"buildTarget": "host-app:build:production"
 						},
 						"development": {
 							"buildTarget": "host-app:build:development"
@@ -85,15 +82,13 @@
 					"defaultConfiguration": "development",
 					"options": {
 						"port": 4200,
-						"publicHost": "http://localhost:4200",
-						"extraWebpackConfig": "projects/host-app/webpack.config.js"
+						"publicHost": "http://localhost:4200"
 					}
 				},
 				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
+					"builder": "@angular-devkit/build-angular:extract-i18n",
 					"options": {
-						"buildTarget": "host-app:build",
-						"extraWebpackConfig": "projects/host-app/webpack.config.js"
+						"buildTarget": "host-app:build"
 					}
 				}
 			}
@@ -113,7 +108,7 @@
 			"prefix": "pl1",
 			"architect": {
 				"build": {
-					"builder": "ngx-build-plus:browser",
+					"builder": "@angular-devkit/build-angular:browser",
 					"options": {
 						"outputPath": "dist/host-app/assets/plugins/plugin-one",
 						"index": "projects/plugin-one/src/index.html",
@@ -129,7 +124,6 @@
 							"projects/plugin-one/src/styles.scss"
 						],
 						"scripts": [],
-						"extraWebpackConfig": "projects/plugin-one/webpack.config.js",
 						"commonChunk": false
 					},
 					"configurations": {
@@ -152,8 +146,7 @@
 									"with": "projects/plugin-one/src/environments/environment.prod.ts"
 								}
 							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/plugin-one/webpack.prod.config.js"
+							"outputHashing": "all"
 						},
 						"development": {
 							"buildOptimizer": false,
@@ -167,11 +160,10 @@
 					"defaultConfiguration": "production"
 				},
 				"serve": {
-					"builder": "ngx-build-plus:dev-server",
+					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "plugin-one:build:production",
-							"extraWebpackConfig": "projects/plugin-one/webpack.prod.config.js"
+							"buildTarget": "plugin-one:build:production"
 						},
 						"development": {
 							"buildTarget": "plugin-one:build:development"
@@ -180,15 +172,13 @@
 					"defaultConfiguration": "development",
 					"options": {
 						"port": 5001,
-						"publicHost": "http://localhost:5001",
-						"extraWebpackConfig": "projects/plugin-one/webpack.config.js"
+						"publicHost": "http://localhost:5001"
 					}
 				},
 				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
+					"builder": "@angular-devkit/build-angular:extract-i18n",
 					"options": {
-						"buildTarget": "plugin-one:build",
-						"extraWebpackConfig": "projects/plugin-one/webpack.config.js"
+						"buildTarget": "plugin-one:build"
 					}
 				}
 			}
@@ -231,7 +221,7 @@
 			"prefix": "app",
 			"architect": {
 				"build": {
-					"builder": "ngx-build-plus:browser",
+					"builder": "@angular-devkit/build-angular:browser",
 					"options": {
             "outputPath": "dist/host-app/assets/plugins/plugin-two",
 						"index": "projects/plugin-two/src/index.html",
@@ -247,7 +237,6 @@
 							"projects/plugin-two/src/styles.scss"
 						],
 						"scripts": [],
-						"extraWebpackConfig": "projects/plugin-two/webpack.config.js",
 						"commonChunk": false
 					},
 					"configurations": {
@@ -270,8 +259,7 @@
 									"with": "projects/plugin-two/src/environments/environment.prod.ts"
 								}
 							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/plugin-two/webpack.prod.config.js"
+							"outputHashing": "all"
 						},
 						"development": {
 							"buildOptimizer": false,
@@ -285,11 +273,10 @@
 					"defaultConfiguration": "production"
 				},
 				"serve": {
-					"builder": "ngx-build-plus:dev-server",
+					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "plugin-two:build:production",
-							"extraWebpackConfig": "projects/plugin-two/webpack.prod.config.js"
+							"buildTarget": "plugin-two:build:production"
 						},
 						"development": {
 							"buildTarget": "plugin-two:build:development"
@@ -298,15 +285,13 @@
 					"defaultConfiguration": "development",
 					"options": {
 						"port": 5002,
-						"publicHost": "http://localhost:5002",
-						"extraWebpackConfig": "projects/plugin-two/webpack.config.js"
+						"publicHost": "http://localhost:5002"
 					}
 				},
 				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
+					"builder": "@angular-devkit/build-angular:extract-i18n",
 					"options": {
-						"buildTarget": "plugin-two:build",
-						"extraWebpackConfig": "projects/plugin-two/webpack.config.js"
+						"buildTarget": "plugin-two:build"
 					}
 				}
 			}

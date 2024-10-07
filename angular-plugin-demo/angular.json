@@ -18,12 +18,45 @@
 			"prefix": "app",
 			"architect": {
 				"build": {
-					"builder": "@angular-devkit/build-angular:browser",
+					"builder": "@angular-architects/native-federation:build",
+					"options": {},
+					"configurations": {
+						"production": {
+							"target": "host-app:esbuild:production"
+						},
+						"development": {
+							"target": "host-app:esbuild:development",
+							"dev": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "@angular-architects/native-federation:build",
 					"options": {
-						"outputPath": "dist/host-app",
+						"target": "host-app:serve-original:development",
+						"rebuildDelay": 0,
+						"dev": true,
+						"port": 0
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular-devkit/build-angular:extract-i18n",
+					"options": {
+						"buildTarget": "host-app:build"
+					}
+				},
+				"esbuild": {
+					"builder": "@angular-devkit/build-angular:application",
+					"options": {
+						"outputPath": {
+							"base": "dist/host-app"
+						},
 						"index": "projects/host-app/src/index.html",
-						"main": "projects/host-app/src/main.ts",
-						"polyfills": "projects/host-app/src/polyfills.ts",
+						"polyfills": [
+							"projects/host-app/src/polyfills.ts",
+							"es-module-shims"
+						],
 						"tsConfig": "projects/host-app/tsconfig.app.json",
 						"inlineStyleLanguage": "scss",
 						"assets": [
@@ -34,7 +67,7 @@
 							"projects/host-app/src/styles.scss"
 						],
 						"scripts": [],
-						"commonChunk": false
+						"browser": "projects/host-app/src/main.ts"
 					},
 					"configurations": {
 						"production": {
@@ -59,9 +92,7 @@
 							"outputHashing": "all"
 						},
 						"development": {
-							"buildOptimizer": false,
 							"optimization": false,
-							"vendorChunk": true,
 							"extractLicenses": false,
 							"sourceMap": true,
 							"namedChunks": true
@@ -69,26 +100,20 @@
 					},
 					"defaultConfiguration": "production"
 				},
-				"serve": {
+				"serve-original": {
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "host-app:build:production"
+							"buildTarget": "host-app:esbuild:production"
 						},
 						"development": {
-							"buildTarget": "host-app:build:development"
+							"buildTarget": "host-app:esbuild:development"
 						}
 					},
 					"defaultConfiguration": "development",
 					"options": {
 						"port": 4200,
 						"publicHost": "http://localhost:4200"
-					}
-				},
-				"extract-i18n": {
-					"builder": "@angular-devkit/build-angular:extract-i18n",
-					"options": {
-						"buildTarget": "host-app:build"
 					}
 				}
 			}
@@ -108,12 +133,45 @@
 			"prefix": "pl1",
 			"architect": {
 				"build": {
-					"builder": "@angular-devkit/build-angular:browser",
+					"builder": "@angular-architects/native-federation:build",
+					"options": {},
+					"configurations": {
+						"production": {
+							"target": "plugin-one:esbuild:production"
+						},
+						"development": {
+							"target": "plugin-one:esbuild:development",
+							"dev": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "@angular-architects/native-federation:build",
 					"options": {
-						"outputPath": "dist/host-app/assets/plugins/plugin-one",
+						"target": "plugin-one:serve-original:development",
+						"rebuildDelay": 0,
+						"dev": true,
+						"port": 0
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular-devkit/build-angular:extract-i18n",
+					"options": {
+						"buildTarget": "plugin-one:build"
+					}
+				},
+				"esbuild": {
+					"builder": "@angular-devkit/build-angular:application",
+					"options": {
+						"outputPath": {
+							"base": "dist/host-app/browser/assets/plugins/plugin-one"
+						},
 						"index": "projects/plugin-one/src/index.html",
-						"main": "projects/plugin-one/src/main.ts",
-						"polyfills": "projects/plugin-one/src/polyfills.ts",
+						"polyfills": [
+							"projects/plugin-one/src/polyfills.ts",
+							"es-module-shims"
+						],
 						"tsConfig": "projects/plugin-one/tsconfig.app.json",
 						"inlineStyleLanguage": "scss",
 						"assets": [
@@ -124,7 +182,7 @@
 							"projects/plugin-one/src/styles.scss"
 						],
 						"scripts": [],
-						"commonChunk": false
+						"browser": "projects/plugin-one/src/main.ts"
 					},
 					"configurations": {
 						"production": {
@@ -149,37 +207,29 @@
 							"outputHashing": "all"
 						},
 						"development": {
-							"buildOptimizer": false,
 							"optimization": false,
-							"vendorChunk": true,
 							"extractLicenses": false,
 							"sourceMap": true,
-							"namedChunks": true
+							"namedChunks": true,
+							"outputPath": {
+								"base": "dist/plugin-one"
+							}
 						}
 					},
 					"defaultConfiguration": "production"
 				},
-				"serve": {
+				"serve-original": {
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "plugin-one:build:production"
+							"buildTarget": "plugin-one:esbuild:production"
 						},
 						"development": {
-							"buildTarget": "plugin-one:build:development"
+							"buildTarget": "plugin-one:esbuild:development",
+							"port": 5001
 						}
 					},
-					"defaultConfiguration": "development",
-					"options": {
-						"port": 5001,
-						"publicHost": "http://localhost:5001"
-					}
-				},
-				"extract-i18n": {
-					"builder": "@angular-devkit/build-angular:extract-i18n",
-					"options": {
-						"buildTarget": "plugin-one:build"
-					}
+					"defaultConfiguration": "development"
 				}
 			}
 		},
@@ -221,12 +271,45 @@
 			"prefix": "app",
 			"architect": {
 				"build": {
-					"builder": "@angular-devkit/build-angular:browser",
+					"builder": "@angular-architects/native-federation:build",
+					"options": {},
+					"configurations": {
+						"production": {
+							"target": "plugin-two:esbuild:production"
+						},
+						"development": {
+							"target": "plugin-two:esbuild:development",
+							"dev": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "@angular-architects/native-federation:build",
 					"options": {
-            "outputPath": "dist/host-app/assets/plugins/plugin-two",
+						"target": "plugin-two:serve-original:development",
+						"rebuildDelay": 0,
+						"dev": true,
+						"port": 0
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular-devkit/build-angular:extract-i18n",
+					"options": {
+						"buildTarget": "plugin-two:build"
+					}
+				},
+				"esbuild": {
+					"builder": "@angular-devkit/build-angular:application",
+					"options": {
+						"outputPath": {
+							"base": "dist/host-app/browser/assets/plugins/plugin-two"
+						},
 						"index": "projects/plugin-two/src/index.html",
-						"main": "projects/plugin-two/src/main.ts",
-						"polyfills": "projects/plugin-two/src/polyfills.ts",
+						"polyfills": [
+							"projects/plugin-two/src/polyfills.ts",
+							"es-module-shims"
+						],
 						"tsConfig": "projects/plugin-two/tsconfig.app.json",
 						"inlineStyleLanguage": "scss",
 						"assets": [
@@ -237,7 +320,7 @@
 							"projects/plugin-two/src/styles.scss"
 						],
 						"scripts": [],
-						"commonChunk": false
+						"browser": "projects/plugin-two/src/main.ts"
 					},
 					"configurations": {
 						"production": {
@@ -262,42 +345,34 @@
 							"outputHashing": "all"
 						},
 						"development": {
-							"buildOptimizer": false,
 							"optimization": false,
-							"vendorChunk": true,
 							"extractLicenses": false,
 							"sourceMap": true,
-							"namedChunks": true
+							"namedChunks": true,
+							"outputPath": {
+								"base": "dist/plugin-two"
+							}
 						}
 					},
 					"defaultConfiguration": "production"
 				},
-				"serve": {
+				"serve-original": {
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "plugin-two:build:production"
+							"buildTarget": "plugin-two:esbuild:production"
 						},
 						"development": {
-							"buildTarget": "plugin-two:build:development"
+							"buildTarget": "plugin-two:esbuild:development",
+							"port": 5002
 						}
 					},
-					"defaultConfiguration": "development",
-					"options": {
-						"port": 5002,
-						"publicHost": "http://localhost:5002"
-					}
-				},
-				"extract-i18n": {
-					"builder": "@angular-devkit/build-angular:extract-i18n",
-					"options": {
-						"buildTarget": "plugin-two:build"
-					}
+					"defaultConfiguration": "development"
 				}
 			}
 		}
-  },
-  "cli": {
-    "analytics": false
-  }
+	},
+	"cli": {
+		"analytics": false
+	}
 }

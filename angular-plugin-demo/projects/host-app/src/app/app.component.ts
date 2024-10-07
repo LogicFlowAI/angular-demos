@@ -20,17 +20,6 @@ export class AppComponent {
   }
 
   loadPlugin(): void {
-    //loadRemoteModule({
-    //  type: 'module',
-    //  remoteEntry: '/assets/plugins/plugin-one/remoteEntry.js',
-    //  exposedModule: './Module'
-    //}).then(m => {
-    //  this._compiler.compileModuleAsync(m.PluginModule).then(moduleFactory => {
-    //    const moduleRef = moduleFactory.create(this._injector) as any;
-    //    const componentFactory = moduleRef.instance.resolveComponent();
-    //    this.container.createComponent(componentFactory, undefined, moduleRef.injector);
-    //  })
-    //});
     this._pluginCore.renderPlugins(environment.PLUGIN_LIST, this.container()!, this._injector);
   }
 

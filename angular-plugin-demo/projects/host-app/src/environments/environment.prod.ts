@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   PLUGIN_LIST: [
-    '/assets/plugins/plugin-one/remoteEntry.js',
-    '/assets/plugins/plugin-two/remoteEntry.js',
+    '/assets/plugins/plugin-one/browser/remoteEntry.json',
+    '/assets/plugins/plugin-two/browser/remoteEntry.json',
   ]
 };

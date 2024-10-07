@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   PLUGIN_LIST: [
-    'http://localhost:5001/remoteEntry.js',
-    'http://localhost:5002/remoteEntry.js',
+    'http://localhost:5001/remoteEntry.json',
+    'http://localhost:5002/remoteEntry.json',
   ]
 };
 

@@ -1,4 +1,4 @@
-import {loadRemoteModule, LoadRemoteModuleOptions } from '@angular-architects/module-federation';
+import {loadRemoteModule, LoadRemoteModuleOptions } from '@angular-architects/native-federation';
 import {Compiler, Injectable, Injector, Type, ViewContainerRef} from '@angular/core';
 import {PluginBaseModule} from "./plugin-base-module";
 
@@ -29,7 +29,6 @@ export class PluginCoreService {
     const inj = injector || this._injector;
 
     const options: LoadRemoteModuleOptions[] = pluginUrls.map(remoteEntry => ({
-      type: 'module',
       exposedModule: './Module',
       remoteEntry
     }));

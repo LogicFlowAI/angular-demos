@@ -1,6 +1,16 @@
 :host {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+}
+
+.btn-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  button {
+    flex: 1;
+  }
 }
 
 .plugin-container {

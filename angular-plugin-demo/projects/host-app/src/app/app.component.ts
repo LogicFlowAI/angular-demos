@@ -1,5 +1,5 @@
-import {Component, Injector, ViewChild, ViewContainerRef} from '@angular/core';
-import {PluginCoreService} from "../../../plugin-core/src/lib/plugin-core.service";
+import {Component, inject, Injector, viewChild, ViewContainerRef} from '@angular/core';
+import {PluginCommonService, PluginCoreService} from 'plugin-core';
 import {environment} from "../environments/environment";
 
 @Component({
@@ -9,12 +9,14 @@ import {environment} from "../environments/environment";
 })
 export class AppComponent {
 
-  @ViewChild('container', {read: ViewContainerRef}) container!: ViewContainerRef;
+  private _pluginCommon = inject(PluginCommonService);
+  private _pluginCore = inject(PluginCoreService);
+  private _injector = inject(Injector);
 
-  constructor(
-    private _pluginCore: PluginCoreService,
-    private _injector: Injector
-  ) {
+  private container = viewChild('container', {read: ViewContainerRef});
+
+  notify(): void {
+    this._pluginCommon.showMessage('Message from Host app');
   }
 
   loadPlugin(): void {
@@ -29,7 +31,7 @@ export class AppComponent {
     //    this.container.createComponent(componentFactory, undefined, moduleRef.injector);
     //  })
     //});
-    this._pluginCore.renderPlugins(environment.PLUGIN_LIST, this.container, this._injector);
+    this._pluginCore.renderPlugins(environment.PLUGIN_LIST, this.container()!, this._injector);
   }
 
 }
